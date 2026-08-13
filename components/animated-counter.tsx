@@ -19,9 +19,16 @@ export function AnimatedCounter({
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -36,10 +43,10 @@ export function AnimatedCounter({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [isMounted]);
 
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || !isMounted) return;
 
     let startTimestamp: number;
     const step = (timestamp: number) => {
@@ -60,7 +67,17 @@ export function AnimatedCounter({
     };
 
     window.requestAnimationFrame(step);
-  }, [isVisible, target, duration]);
+  }, [isVisible, target, duration, isMounted]);
+
+  if (!isMounted) {
+    return (
+      <div ref={ref} className={className}>
+        {prefix}
+        {target.toLocaleString()}
+        {suffix}
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className={className}>

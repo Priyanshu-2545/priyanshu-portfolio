@@ -7,19 +7,21 @@ export function CustomCursor() {
   const trailRef = useRef<HTMLDivElement[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const cursor = cursorRef.current;
     if (!cursor) return;
 
     // Create trail elements
-    const trailCount = 8;
+    const trailCount = 5;
     for (let i = 0; i < trailCount; i++) {
       const trail = document.createElement('div');
-      trail.className = 'fixed pointer-events-none rounded-full bg-blue-500/30 z-50';
-      trail.style.width = `${8 + i * 2}px`;
-      trail.style.height = `${8 + i * 2}px`;
-      trail.style.transition = 'transform 0.1s ease-out';
+      trail.className = 'fixed pointer-events-none rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 z-50';
+      trail.style.width = `${20 - i * 3}px`;
+      trail.style.height = `${20 - i * 3}px`;
+      trail.style.transition = 'transform 0.15s ease-out, opacity 0.15s ease-out';
+      trail.style.opacity = `${0.4 - i * 0.08}`;
       document.body.appendChild(trail);
       trailRef.current.push(trail);
     }
@@ -27,15 +29,14 @@ export function CustomCursor() {
     const moveCursor = (e: MouseEvent) => {
       if (!cursor) return;
 
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
+      setPosition({ x: e.clientX, y: e.clientY });
 
-      // Move trail with delay
+      // Move trail with delay using CSS transition
       trailRef.current.forEach((trail, index) => {
         setTimeout(() => {
-          trail.style.left = `${e.clientX}px`;
-          trail.style.top = `${e.clientY}px`;
-        }, index * 20);
+          trail.style.left = `${e.clientX - (10 - index * 1.5)}px`;
+          trail.style.top = `${e.clientY - (10 - index * 1.5)}px`;
+        }, index * 30);
       });
     };
 
@@ -51,15 +52,26 @@ export function CustomCursor() {
     document.addEventListener('mouseup', handleMouseUp);
 
     // Add hover effect on clickable elements
-    const interactiveElements = document.querySelectorAll('a, button, input, textarea');
-    interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', () => {
-        cursor?.classList.add('scale-150');
+    const addHoverEffects = () => {
+      const interactiveElements = document.querySelectorAll('a, button, input, textarea');
+      interactiveElements.forEach((el) => {
+        el.addEventListener('mouseenter', () => {
+          cursor?.classList.add('scale-125');
+          cursor?.classList.add('bg-gradient-to-r');
+          cursor?.classList.add('from-purple-500');
+          cursor?.classList.add('to-pink-500');
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor?.classList.remove('scale-125');
+          cursor?.classList.remove('bg-gradient-to-r');
+          cursor?.classList.remove('from-purple-500');
+          cursor?.classList.remove('to-pink-500');
+        });
       });
-      el.addEventListener('mouseleave', () => {
-        cursor?.classList.remove('scale-150');
-      });
-    });
+    };
+
+    // Wait for DOM to be ready
+    setTimeout(addHoverEffects, 100);
 
     return () => {
       document.removeEventListener('mousemove', moveCursor);
@@ -89,13 +101,16 @@ export function CustomCursor() {
     <>
       <div
         ref={cursorRef}
-        className={`fixed pointer-events-none rounded-full bg-blue-500 z-50 transition-transform duration-100 ${
+        className={`fixed pointer-events-none rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 z-50 ${
           isVisible ? 'opacity-100' : 'opacity-0'
-        } ${isClicking ? 'scale-75' : 'scale-100'}`}
+        } ${isClicking ? 'scale-90' : 'scale-100'}`}
         style={{
-          width: '12px',
-          height: '12px',
-          transition: 'transform 0.1s ease-out, opacity 0.2s ease-out',
+          width: '20px',
+          height: '20px',
+          left: `${position.x - 10}px`,
+          top: `${position.y - 10}px`,
+          transition: 'transform 0.1s ease-out, opacity 0.2s ease-out, background 0.3s ease',
+          willChange: 'transform, left, top',
         }}
       />
     </>

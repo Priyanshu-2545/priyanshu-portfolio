@@ -187,21 +187,31 @@ export function SkillsSection() {
 
         {/* Resume Download Section */}
         <div className="mt-16 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-200 dark:border-blue-900 rounded-xl p-8 md:p-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-6">
             <div className="space-y-3">
               <h3 className="text-2xl font-bold">Download My Resume</h3>
               <p className="text-muted-foreground max-w-2xl">
-                Get my complete DevOps Engineer resume with detailed experience, certifications, and technical expertise. Perfect for HR and hiring managers.
+                Choose the appropriate resume based on the role you're hiring for. Both resumes include detailed experience, certifications, and technical expertise.
               </p>
             </div>
-            <a
-              href="/resume.pdf"
-              download="Priyanshu_Garg_DevOps_Resume.pdf"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl font-bold transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 whitespace-nowrap"
-            >
-              <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>Download Resume</span>
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="/Priyanshu_Garg_DevOps_Engineer.pdf"
+                download="Priyanshu_Garg_DevOps_Engineer.pdf"
+                className="group inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl font-bold transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 whitespace-nowrap"
+              >
+                <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>DevOps Engineer Resume</span>
+              </a>
+              <a
+                href="/Priyanshu_Garg_SDE.pdf"
+                download="Priyanshu_Garg_SDE.pdf"
+                className="group inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-xl font-bold transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/30 whitespace-nowrap"
+              >
+                <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Software Developer Resume</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
