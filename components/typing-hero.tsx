@@ -5,6 +5,8 @@ import { ArrowRight } from 'lucide-react';
 import { DotGrid } from '@/components/dot-grid';
 import { MagneticButton } from '@/components/magnetic-button';
 import { useAnimatedCounter } from '@/hooks/use-animated-counter';
+import { TextScramble } from '@/components/text-scramble';
+import { GradientText } from '@/components/gradient-text';
 
 const technologies = [
   'AWS Engineer',
@@ -94,9 +96,7 @@ export function TypingHero() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Hey, I&apos;m
               <br />
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                Priyanshu Garg
-              </span>
+              <GradientText text="Priyanshu Garg" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold" />
             </h2>
 
             {/* Typing Animation */}
@@ -143,12 +143,11 @@ export function TypingHero() {
             <div className="flex flex-wrap gap-2">
               {['AWS', 'Docker', 'Kubernetes', 'Node.js', 'PostgreSQL', 'Next.js', 'React', 'Jenkins'].map(
                 (tech) => (
-                  <span
+                  <TextScramble
                     key={tech}
+                    text={tech}
                     className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 font-medium rounded-lg text-blue-600 dark:text-blue-400 hover:border-blue-500 hover:scale-105 transition-all duration-200"
-                  >
-                    {tech}
-                  </span>
+                  />
                 ),
               )}
             </div>

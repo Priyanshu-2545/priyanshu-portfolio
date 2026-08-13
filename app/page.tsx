@@ -16,12 +16,21 @@ import { StatsWidget } from '@/components/stats-widget';
 import { CtaBadges } from '@/components/cta-badges';
 import { TestimonialsSection } from '@/components/testimonials-section';
 import { SkillGlobe } from '@/components/skill-globe';
+import { ParticleBackground } from '@/components/particle-background';
+import { CustomCursor } from '@/components/custom-cursor';
+import { FloatingNav } from '@/components/floating-nav';
+import { GradientText } from '@/components/gradient-text';
+import { GlassCard } from '@/components/glass-card';
+import { ParallaxSection } from '@/components/parallax-section';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-slate-900/5">
+      <CustomCursor />
+      <ParticleBackground />
       <AmbientBg />
       <ScrollProgress />
+      <FloatingNav />
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
@@ -30,7 +39,7 @@ export default function Home() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
               <Code2 className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold text-lg">Priyanshu</span>
+            <GradientText text="Priyanshu" className="font-bold text-lg" />
           </div>
           <div className="flex gap-6 items-center">
             <div className="hidden md:flex gap-8">
@@ -45,7 +54,9 @@ export default function Home() {
       </nav>
 
       {/* Typing Hero Section */}
-      <TypingHero />
+      <ParallaxSection speed={0.3}>
+        <TypingHero />
+      </ParallaxSection>
 
       {/* Stats Widget */}
       <ScrollReveal>
@@ -54,52 +65,72 @@ export default function Home() {
 
       {/* Projects Section */}
       <ScrollReveal>
-        <ProjectsSection />
+        <ParallaxSection speed={0.2}>
+          <ProjectsSection />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* 3D Skill Globe - Interactive Premium Feature */}
       <ScrollReveal delay={100}>
-        <SkillGlobe />
+        <ParallaxSection speed={0.15} direction="down">
+          <SkillGlobe />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Skills Section */}
       <ScrollReveal delay={100}>
-        <SkillsSection />
+        <ParallaxSection speed={0.1}>
+          <SkillsSection />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Certificates Showcase - Unique Feature */}
       <ScrollReveal delay={100}>
-        <CertificatesShowcase />
+        <ParallaxSection speed={0.2}>
+          <CertificatesShowcase />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Terminal Section */}
       <ScrollReveal delay={100}>
-        <TerminalSection />
+        <ParallaxSection speed={0.15}>
+          <TerminalSection />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Experience Section */}
       <ScrollReveal delay={100}>
-        <ExperienceSection />
+        <ParallaxSection speed={0.1}>
+          <ExperienceSection />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Timeline Achievements - Premium USP Feature */}
       <ScrollReveal delay={100}>
-        <TimelineAchievements />
+        <ParallaxSection speed={0.2}>
+          <TimelineAchievements />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Testimonials Section - Social Proof */}
       <ScrollReveal delay={100}>
-        <TestimonialsSection />
+        <ParallaxSection speed={0.15}>
+          <TestimonialsSection />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* CTA Badges - Connect Section */}
       <ScrollReveal delay={100}>
-        <CtaBadges />
+        <ParallaxSection speed={0.1}>
+          <CtaBadges />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Contact Section */}
       <ScrollReveal delay={100}>
-        <ContactSection />
+        <ParallaxSection speed={0.2}>
+          <ContactSection />
+        </ParallaxSection>
       </ScrollReveal>
 
       {/* Footer */}

@@ -1,6 +1,8 @@
 'use client';
 
 import { useAnimatedCounter } from '@/hooks/use-animated-counter';
+import { GlassCard } from '@/components/glass-card';
+import { AnimatedCounter } from '@/components/animated-counter';
 
 interface Stat {
   label: string;
@@ -42,16 +44,8 @@ const stats: Stat[] = [
 ];
 
 function StatItem({ stat }: { stat: Stat }) {
-  const { ref, value } = useAnimatedCounter(stat.value, 2000, stat.suffix);
-
   return (
-    <div
-      ref={ref}
-      className="group relative p-6 rounded-xl border border-border bg-card/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/20 overflow-hidden"
-    >
-      {/* Hover gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-cyan-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-cyan-500/5 group-hover:to-blue-500/5 transition-all duration-500 pointer-events-none" />
-
+    <GlassCard className="group relative p-6 overflow-hidden">
       {/* Content */}
       <div className="relative z-10 space-y-3 text-center">
         <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
@@ -59,15 +53,17 @@ function StatItem({ stat }: { stat: Stat }) {
         </div>
         <div>
           <p className={`text-3xl lg:text-4xl font-bold ${stat.color} transition-colors`}>
-            {value}
+            <AnimatedCounter
+              target={stat.value}
+              duration={2000}
+              suffix={stat.suffix}
+              className="text-3xl lg:text-4xl font-bold"
+            />
           </p>
           <p className="text-sm text-muted-foreground font-medium mt-2">{stat.label}</p>
         </div>
       </div>
-
-      {/* Border animation on hover */}
-      <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-500/20 transition-all duration-500 pointer-events-none" />
-    </div>
+    </GlassCard>
   );
 }
 

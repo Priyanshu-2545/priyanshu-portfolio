@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CircleCheck as CheckCircle } from 'lucide-react';
+import { ConfettiCelebration } from '@/components/confetti-celebration';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -99,6 +100,7 @@ export function ContactSection() {
 
           {/* Contact Form */}
           <div className="md:col-span-2 lg:col-span-2">
+            <ConfettiCelebration trigger={submitted} />
             {submitted && (
               <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 rounded-lg flex items-center gap-2 sm:gap-3">
                 <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-green-600 dark:text-green-400 flex-shrink-0" />

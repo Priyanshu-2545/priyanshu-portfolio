@@ -2,6 +2,7 @@
 
 import { ExternalLink, Github, Award, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import { TiltCard } from '@/components/tilt-card';
 
 const projects = [
   {
@@ -66,11 +67,12 @@ export function ProjectsSection() {
 
         <div className="space-y-4 sm:space-y-6">
           {projects.map((project, idx) => (
-            <div
+            <TiltCard
               key={project.id}
+              intensity={15}
+              className="group bg-gradient-to-r from-background to-background border border-border rounded-xl sm:rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer"
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
-              className="group bg-gradient-to-r from-background to-background border border-border rounded-xl sm:rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20 cursor-pointer"
             >
               <div className="relative p-4 sm:p-6 md:p-8 lg:p-10">
                 {/* Content */}
@@ -161,7 +163,7 @@ export function ProjectsSection() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 -z-10 rounded-2xl" />
                 )}
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
 
