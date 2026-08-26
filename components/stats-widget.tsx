@@ -36,7 +36,7 @@ const stats: Stat[] = [
   },
   {
     label: 'Certifications',
-    value: 3,
+    value: 6,
     suffix: '',
     icon: '📜',
     color: 'text-orange-500',
@@ -52,14 +52,14 @@ function StatItem({ stat }: { stat: Stat }) {
           {stat.icon}
         </div>
         <div>
-          <p className={`text-3xl lg:text-4xl font-bold ${stat.color} transition-colors`}>
+          <div className={`text-3xl lg:text-4xl font-bold ${stat.color} transition-colors`}>
             <AnimatedCounter
               target={stat.value}
               duration={2000}
               suffix={stat.suffix}
               className="text-3xl lg:text-4xl font-bold"
             />
-          </p>
+          </div>
           <p className="text-sm text-muted-foreground font-medium mt-2">{stat.label}</p>
         </div>
       </div>

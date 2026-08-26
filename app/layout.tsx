@@ -1,3 +1,4 @@
+// @ts-ignore
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
   description: 'DevOps engineer specializing in AWS, Kubernetes, CI/CD pipelines, and cloud infrastructure. Building scalable systems with Node.js, Next.js, and PostgreSQL.',
   keywords: ['DevOps', 'AWS', 'Kubernetes', 'Full-Stack Developer', 'Cloud Engineer', 'CI/CD'],
   authors: [{ name: 'Priyanshu Garg' }],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -35,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="color-scheme" content="light dark" />
       </head>

@@ -10,14 +10,12 @@ import { TypingHero } from '@/components/typing-hero';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { CertificatesShowcase } from '@/components/certificates-showcase';
+import { CredentialsShowcase } from '@/components/credentials-showcase';
 import { TimelineAchievements } from '@/components/timeline-achievements';
 import { AmbientBg } from '@/components/ambient-bg';
 import { StatsWidget } from '@/components/stats-widget';
 import { CtaBadges } from '@/components/cta-badges';
-import { TestimonialsSection } from '@/components/testimonials-section';
-import { SkillGlobe } from '@/components/skill-globe';
 import { ParticleBackground } from '@/components/particle-background';
-import { CustomCursor } from '@/components/custom-cursor';
 import { FloatingNav } from '@/components/floating-nav';
 import { GradientText } from '@/components/gradient-text';
 import { GlassCard } from '@/components/glass-card';
@@ -26,7 +24,6 @@ import { ParallaxSection } from '@/components/parallax-section';
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-slate-900/5">
-      <CustomCursor />
       <ParticleBackground />
       <AmbientBg />
       <ScrollProgress />
@@ -70,13 +67,6 @@ export default function Home() {
         </ParallaxSection>
       </ScrollReveal>
 
-      {/* 3D Skill Globe - Interactive Premium Feature */}
-      <ScrollReveal delay={100}>
-        <ParallaxSection speed={0.15} direction="down">
-          <SkillGlobe />
-        </ParallaxSection>
-      </ScrollReveal>
-
       {/* Skills Section */}
       <ScrollReveal delay={100}>
         <ParallaxSection speed={0.1}>
@@ -84,12 +74,6 @@ export default function Home() {
         </ParallaxSection>
       </ScrollReveal>
 
-      {/* Certificates Showcase - Unique Feature */}
-      <ScrollReveal delay={100}>
-        <ParallaxSection speed={0.2}>
-          <CertificatesShowcase />
-        </ParallaxSection>
-      </ScrollReveal>
 
       {/* Terminal Section */}
       <ScrollReveal delay={100}>
@@ -105,17 +89,17 @@ export default function Home() {
         </ParallaxSection>
       </ScrollReveal>
 
-      {/* Timeline Achievements - Premium USP Feature */}
+      {/* Credentials & Achievements - Unified Section */}
       <ScrollReveal delay={100}>
         <ParallaxSection speed={0.2}>
-          <TimelineAchievements />
+          <CredentialsShowcase />
         </ParallaxSection>
       </ScrollReveal>
 
-      {/* Testimonials Section - Social Proof */}
+      {/* Timeline Achievements - Premium USP Feature */}
       <ScrollReveal delay={100}>
         <ParallaxSection speed={0.15}>
-          <TestimonialsSection />
+          <TimelineAchievements />
         </ParallaxSection>
       </ScrollReveal>
 

@@ -208,31 +208,6 @@ export function TestimonialsSection() {
             ))}
           </div>
         </div>
-
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
-          {[
-            { label: 'Happy Clients', value: '50+', icon: '😊' },
-            { label: 'Projects', value: '100+', icon: '🚀' },
-            { label: 'Rating', value: '5.0', icon: '⭐' },
-            { label: 'Success Rate', value: '99%', icon: '✓' },
-          ].map((stat, idx) => (
-            <div
-              key={idx}
-              className="p-4 sm:p-6 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center hover:shadow-lg hover:scale-105 transition-all duration-300 group"
-            >
-              <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-125 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-                {stat.value}
-              </p>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 sm:mt-2">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
       </div>
 
       <style>{`

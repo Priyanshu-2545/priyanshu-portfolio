@@ -13,9 +13,22 @@ interface TimelineItem {
 const timeline: TimelineItem[] = [
   {
     year: '2023',
+    title: 'Kavach Hackathon Grand Finalist',
+    description: 'Reached Grand Finale in Kavach Cyber Security Hackathon - Government of India initiative',
+    icon: '🛡️',
+    highlight: true,
+  },
+  {
+    year: '2023',
     title: 'Started MERN Journey',
     description: 'Completed Full-Stack Web Development certification with hands-on projects',
     icon: '🚀',
+  },
+  {
+    year: '2024',
+    title: 'GCP Cloud Certified',
+    description: 'Earned Google Cloud Computing Foundations certification',
+    icon: '☁️',
   },
   {
     year: '2024',
@@ -38,17 +51,47 @@ const timeline: TimelineItem[] = [
     icon: '⚙️',
   },
   {
+    year: '2024',
+    title: 'MongoDB & IBM Certified',
+    description: 'Earned MongoDB Developer Associate and IBM Project Management certifications',
+    icon: '📜',
+  },
+  {
+    year: '2024',
+    title: 'GDG Core Team Member',
+    description: 'Joined GDG Udaipur Core Team, organized DevFest for 300+ attendees',
+    icon: '👥',
+  },
+  {
     year: '2025',
-    title: 'Global Recognition',
-    description: 'Achieved Top 10k Global ranking in Hacktoberfest as Super Contributor',
+    title: 'Hacktoberfest Supercontributor',
+    description: 'Global Top 10k ranking with 6+ accepted PRs/MRs in open-source',
     icon: '⭐',
     highlight: true,
   },
   {
     year: '2026',
-    title: 'AWS & Cloud Certified',
-    description: 'Earned AWS Cloud Practitioner and Google Cloud certifications',
+    title: 'AWS Cloud Certified',
+    description: 'Earned AWS Cloud Quest: Cloud Practitioner certification',
     icon: '☁️',
+  },
+];
+
+const certificates = [
+  {
+    title: 'Kavach Hackathon',
+    image: '/kavachh.jpeg',
+    year: '2023',
+  },
+  {
+    title: 'Hack-Avishkar',
+    image: '/hack-avishkar.jpeg',
+    year: '2024',
+  },
+  {
+    title: 'GDG Groups',
+    image: '/Gdggroups.jpeg',
+    year: '2024',
   },
 ];
 
@@ -101,18 +144,18 @@ export function TimelineAchievements() {
                     >
                       <div className="flex gap-2 sm:gap-3 mb-2 sm:mb-3">
                         <span className="text-xl sm:text-2xl flex-shrink-0">{item.icon}</span>
-                        <div className="min-w-0">
+                        <div className="min-w-0 flex-1">
                           <p className="text-xs sm:text-sm font-bold text-blue-500">{item.year}</p>
-                          <h3 className="text-lg font-bold group-hover:text-blue-500 transition-colors">
+                          <h3 className="text-base sm:text-lg font-bold group-hover:text-blue-500 transition-colors line-clamp-2">
                             {item.title}
                           </h3>
                         </div>
                       </div>
-                      <p className="text-muted-foreground text-sm">{item.description}</p>
+                      <p className="text-muted-foreground text-xs sm:text-sm line-clamp-3">{item.description}</p>
 
                       {item.highlight && (
                         <div className="absolute top-2 right-2">
-                          <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs font-semibold text-blue-600 dark:text-blue-400">
+                          <span className="inline-flex items-center gap-1 px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded-full text-xs font-semibold text-blue-600 dark:text-blue-400 whitespace-nowrap">
                             Featured
                           </span>
                         </div>
@@ -140,6 +183,37 @@ export function TimelineAchievements() {
                 </div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Certificate Images */}
+        <div className="mt-16 sm:mt-20">
+          <div className="space-y-2 sm:space-y-3 text-center mb-8 sm:mb-10">
+            <p className="text-blue-500 font-semibold text-xs sm:text-sm uppercase tracking-widest">Certificates</p>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">Achievement Certificates</h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            {certificates.map((cert, idx) => (
+              <div
+                key={idx}
+                className="group relative bg-card rounded-xl overflow-hidden border border-border hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <span className="text-white font-semibold text-sm">{cert.title}</span>
+                  </div>
+                </div>
+                <div className="p-3 sm:p-4">
+                  <p className="font-bold text-sm sm:text-base text-center">{cert.title}</p>
+                  <p className="text-xs text-muted-foreground text-center mt-1">{cert.year}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

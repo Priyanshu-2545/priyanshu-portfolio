@@ -102,6 +102,20 @@ export function CtaBadges() {
             })}
           </div>
 
+          {/* Currently Available Box */}
+          <div className="mt-12 p-6 sm:p-8 rounded-xl bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 backdrop-blur-sm max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="relative">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-green-600 dark:text-green-400">Currently Available</h3>
+            </div>
+            <p className="text-sm sm:text-base text-muted-foreground">
+              I'm currently open to new opportunities and existing projects. Whether you need a full-time engineer or a freelance consultant, let's talk.
+            </p>
+          </div>
+
           {/* Quick Contact Info */}
           <div className="mt-16 p-8 rounded-xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20 backdrop-blur-sm max-w-2xl mx-auto">
             <div className="space-y-4">

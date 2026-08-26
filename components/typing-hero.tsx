@@ -226,7 +226,7 @@ export function TypingHero() {
               borderClass="border-green-500/20"
             />
             <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20">
-              <p className="text-2xl sm:text-3xl font-bold text-amber-500">AWS</p>
+              <p className="text-xl sm:text-2xl font-bold text-amber-500">AWS + GCP</p>
               <p className="text-xs sm:text-sm text-muted-foreground">Certified</p>
             </div>
             <div className="p-3 rounded-lg bg-gradient-to-br from-orange-500/10 to-red-500/10 border border-orange-500/20">

@@ -38,17 +38,6 @@ const projects = [
     github: 'https://github.com/Priyanshu-2545',
     demo: 'https://github.com/Priyanshu-2545',
   },
-  {
-    id: 4,
-    title: 'Geospatial Data Pipeline - GIS & Spatial Data Engineering',
-    description: 'Automated Linux-based pipeline for processing geospatial data with optimized PostgreSQL PostGIS queries.',
-    longDesc: 'Automated data processing reducing manual effort by 40%. Managed workflow scheduling with Git version control. Optimized spatial data retrieval for production environments at India Space Lab. Handled 1000+ spatial datasets daily.',
-    tags: ['Linux', 'PostgreSQL', 'PostGIS', 'Git', 'Shell Scripts', 'Data Pipeline'],
-    icon: '🗺️',
-    achievement: 'Production Ready - 40% efficiency gain',
-    github: 'https://github.com/Priyanshu-2545',
-    demo: 'https://github.com/Priyanshu-2545',
-  },
 ];
 
 export function ProjectsSection() {
