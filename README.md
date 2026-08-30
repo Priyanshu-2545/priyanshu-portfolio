@@ -2,132 +2,172 @@
 
 A modern, professional portfolio website showcasing DevOps expertise, full-stack development skills, and cloud infrastructure projects.
 
-## Features
+## 🚀 Features
 
-- **Modern Design**: Clean, professional dark-mode optimized interface
-- **Responsive Layout**: Fully responsive across desktop, tablet, and mobile devices
-- **Interactive Terminal Demo**: Live demonstration of DevOps commands and workflows
-- **Project Showcase**: Detailed project cards with tech stack and achievements
-- **Skills Visualization**: Categorized technical skills with proficiency indicators
-- **Experience Timeline**: Professional experience and certifications
-- **Contact Form**: Direct contact integration
-- **Performance Optimized**: Built with Next.js for optimal performance
+- **Modern Design**: Clean, professional UI with dark/light theme toggle
+- **Responsive**: Fully responsive design for all devices
+- **Animations**: Smooth scroll reveal animations and particle effects
+- **Interactive**: Typing effects, hover animations, and interactive components
+- **SEO Optimized**: Proper meta tags and structured data
+- **Performance**: Optimized for fast loading and smooth interactions
 
-## Tech Stack
+### Key Sections
 
-- **Frontend**: Next.js 13+ with TypeScript
+1. **Hero Section** - Animated typing effect with certification badges
+2. **Skills Section** - Categorized skills with real emoji icons
+3. **Projects Section** - Featured projects with tech stack and links
+4. **Experience Section** - Professional experience timeline
+5. **Credentials & Achievements** - Unified section for certifications, achievements, and badges
+6. **Timeline Journey** - Career timeline with certificate images
+7. **Terminal Section** - Animated terminal effect
+8. **Contact Section** - Contact form and social links
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui + Lucide React icons
-- **Deployment**: Vercel
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Animations**: Custom CSS + React hooks
 
-## Getting Started
+## 📦 Installation
 
 ### Prerequisites
-- Node.js 18+ 
-- npm or yarn
 
-### Installation
+- Node.js 18+ installed
+- npm or yarn package manager
+- Git
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd portfolio
-```
+### Setup
 
-2. Install dependencies:
-```bash
-npm install
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Priyanshu-2545/priyanshu-portfolio.git
+   cd priyanshu-portfolio
+   ```
 
-3. Run development server:
-```bash
-npm run dev
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+3. **Run development server**
+   ```bash
+   npm run dev
+   ```
 
-## Build & Deployment
+4. **Open browser**
+   ```
+   Navigate to http://localhost:3000
+   ```
 
-### Local Build
+## 🏗️ Build for Production
+
 ```bash
 npm run build
-npm run start
+npm start
 ```
 
-### Deploy to Vercel
-
-1. Push to GitHub:
-```bash
-git add .
-git commit -m "Initial portfolio commit"
-git push origin main
-```
-
-2. Go to [Vercel Dashboard](https://vercel.com/dashboard)
-3. Click "Add New..." → "Project"
-4. Import your GitHub repository
-5. Click "Deploy"
-
-Vercel will automatically:
-- Build your Next.js application
-- Deploy to a live URL
-- Enable automatic deployments on git push
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-├── app/
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx            # Home page with all sections
-│   └── globals.css         # Global styles
-├── components/
-│   ├── projects-section.tsx      # Featured projects
-│   ├── skills-section.tsx        # Technical skills
-│   ├── experience-section.tsx    # Experience & achievements
-│   ├── terminal-section.tsx      # Interactive terminal demo
-│   ├── contact-section.tsx       # Contact form
-│   ├── footer.tsx                # Footer
-│   └── ui/                       # shadcn/ui components
-├── lib/
-│   └── utils.ts            # Utility functions
-└── public/                 # Static assets
+priyanshu-portfolio/
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout with metadata
+│   ├── page.tsx           # Main page
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── typing-hero.tsx    # Hero section
+│   ├── skills-section.tsx # Skills showcase
+│   ├── projects-section.tsx
+│   ├── experience-section.tsx
+│   ├── credentials-showcase.tsx
+│   ├── timeline-achievements.tsx
+│   └── ...
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utility functions
+├── public/                # Static assets
+│   ├── kavachh.jpeg
+│   ├── hack-avishkar.jpeg
+│   └── Gdggroups.jpeg
+├── docs/                  # Documentation
+│   ├── AWS_DEPLOYMENT_GUIDE.md
+│   ├── PROJECT_DOCUMENTATION.md
+│   └── DEPLOYMENT_CHECKLIST.md
+└── README.md
 ```
 
 ## Customization
 
-### Update Personal Information
-Edit the contact information in:
-- `components/contact-section.tsx` - Email, phone, location
-- `components/projects-section.tsx` - Project details
-- `components/experience-section.tsx` - Experience and achievements
+### Update Skills
+Edit `components/skills-section.tsx` to add/modify skills.
 
-### Modify Colors
-Update Tailwind color classes in components or modify CSS variables in `app/globals.css`
+### Update Projects
+Edit `components/projects-section.tsx` to add/modify projects.
 
-### Add/Remove Sections
-Components are modular and can be easily added or removed from `app/page.tsx`
+### Update Credentials
+Edit `components/credentials-showcase.tsx` to add/modify certifications and achievements.
 
-## Performance
+### Update Timeline
+Edit `components/timeline-achievements.tsx` to add/modify timeline events.
 
-- Optimized for Core Web Vitals
-- Automatic image optimization
-- Zero-downtime deployments
-- CDN-backed static files
+## 🚀 Deployment
 
-## SEO
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel
+```
 
-- Optimized metadata and Open Graph tags
-- Semantic HTML structure
-- Mobile-friendly design
-- Fast page load times
+### Netlify
+```bash
+npm install -g netlify-cli
+netlify deploy --prod
+```
 
-## License
+### AWS
+See [AWS Deployment Guide](docs/AWS_DEPLOYMENT_GUIDE.md) for detailed AWS deployment instructions.
 
-MIT
+## 📚 Documentation
 
-## Connect
+- [AWS Deployment Guide](docs/AWS_DEPLOYMENT_GUIDE.md) - Complete AWS deployment instructions
+- [Project Documentation](docs/PROJECT_DOCUMENTATION.md) - Detailed project documentation
+- [Deployment Checklist](docs/DEPLOYMENT_CHECKLIST.md) - Pre and post-deployment checklist
 
+## 🔐 Security
+
+- Environment variables are used for sensitive data
+- `.env` files are included in `.gitignore`
+- No API keys or secrets are committed to the repository
+- AWS credentials are protected in `.gitignore`
+
+## 🌐 Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👤 Author
+
+**Priyanshu Garg**
+- GitHub: [@Priyanshu-2545](https://github.com/Priyanshu-2545)
 - Email: priyanshugarg2525@gmail.com
 - Phone: +91 7791994483
-- GitHub: @priyanshugarg
 - LinkedIn: /in/priyanshu-garg
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- shadcn/ui for beautiful UI components
+- Tailwind CSS for utility-first styling
+- Lucide React for icon library
+
+---
+
+**Note**: This portfolio is ready for deployment to AWS, Vercel, or Netlify. See the documentation folder for detailed deployment guides.
