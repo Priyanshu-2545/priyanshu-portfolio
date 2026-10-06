@@ -11,7 +11,7 @@ export function ScrollReveal({
   className?: string;
   delay?: number;
 }) {
-  const { ref, isVisible } = useScrollReveal(0.12);
+  const { ref, isVisible } = useScrollReveal(0.15);
 
   return (
     <div
@@ -19,8 +19,8 @@ export function ScrollReveal({
       className={className}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
-        transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(50px) scale(0.98)',
+        transition: `opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
       }}
     >
       {children}

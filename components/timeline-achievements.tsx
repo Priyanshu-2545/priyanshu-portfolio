@@ -8,72 +8,75 @@ interface TimelineItem {
   description: string;
   icon: string;
   highlight?: boolean;
+  link?: string;
 }
 
 const timeline: TimelineItem[] = [
   {
+    year: '2022',
+    title: 'B.Tech journey began',
+    description: 'Started Computer Science & Engineering at Geetanjali Institute of Technical Studies, Udaipur.',
+    icon: '🎓',
+  },
+  {
     year: '2023',
-    title: 'Kavach Hackathon Grand Finalist',
-    description: 'Reached Grand Finale in Kavach Cyber Security Hackathon - Government of India initiative',
+    title: 'Started MERN stack journey',
+    description: 'Built my foundation in full-stack development with MongoDB, Express, React, and Node.js.',
+    icon: '🚀',
+  },
+  {
+    year: '2023',
+    title: 'Kavach Hackathon finalist',
+    description: 'Reached the Grand Finale of the Kavach Cyber Security Hackathon by the Government of India.',
     icon: '🛡️',
     highlight: true,
   },
   {
-    year: '2023',
-    title: 'Started MERN Journey',
-    description: 'Completed Full-Stack Web Development certification with hands-on projects',
-    icon: '🚀',
-  },
-  {
     year: '2024',
-    title: 'GCP Cloud Certified',
-    description: 'Earned Google Cloud Computing Foundations certification',
-    icon: '☁️',
-  },
-  {
-    year: '2024',
-    title: 'Hack-Avishkar Champion',
-    description: '1st Place Winner at Hack-Avishkar Competition hosted by Google Developer Student Clubs',
+    title: 'Hack-Avishkar champion',
+    description: 'Won Hack-Avishkar and developed solutions focused on practical, impactful engineering.',
     icon: '🥇',
     highlight: true,
   },
   {
     year: '2024',
-    title: 'Smart India Hackathon Winner',
-    description: 'Won Smart India Hackathon with innovative Smart Asset Monitoring System',
+    title: 'Smart India Hackathon winner',
+    description: 'Won SIH 2024 with the Smart Asset Monitoring System project.',
     icon: '🏆',
     highlight: true,
   },
   {
     year: '2024',
-    title: 'DevOps Specialization',
-    description: 'Mastered Docker, Kubernetes, CI/CD pipelines, and cloud infrastructure',
-    icon: '⚙️',
+    title: 'GCP Cloud Certified',
+    description: 'Earned the Google Cloud Computing Foundations certification and deepened my cloud learning.',
+    icon: '☁️',
   },
   {
     year: '2024',
-    title: 'MongoDB & IBM Certified',
-    description: 'Earned MongoDB Developer Associate and IBM Project Management certifications',
-    icon: '📜',
-  },
-  {
-    year: '2024',
-    title: 'GDG Core Team Member',
-    description: 'Joined GDG Udaipur Core Team, organized DevFest for 300+ attendees',
+    title: 'GDG core team member',
+    description: 'Served as a volunteer member of the GDG Udaipur Core Team and helped drive community events.',
     icon: '👥',
   },
   {
     year: '2025',
-    title: 'Hacktoberfest Supercontributor',
-    description: 'Global Top 10k ranking with 6+ accepted PRs/MRs in open-source',
+    title: 'Hacktoberfest supercontributor',
+    description: 'Contributed to open-source projects and earned recognition as a Hacktoberfest supercontributor.',
     icon: '⭐',
     highlight: true,
+    link: 'https://www.holopin.io/hacktoberfest2025/userbadge/cmgusqszh007bky04icq5iyk4',
+  },
+  {
+    year: '2025',
+    title: 'MongoDB developer certification',
+    description: 'Strengthened my backend and database skills with MongoDB-focused learning and hands-on work.',
+    icon: '📘',
   },
   {
     year: '2026',
-    title: 'AWS Cloud Certified',
-    description: 'Earned AWS Cloud Quest: Cloud Practitioner certification',
+    title: 'Internship and AWS certification',
+    description: 'Completed a GIS & spatial data internship and earned the AWS Cloud Practitioner certification.',
     icon: '☁️',
+    highlight: true,
   },
 ];
 
@@ -89,7 +92,7 @@ const certificates = [
     year: '2024',
   },
   {
-    title: 'GDG Groups',
+    title: 'GDG Udaipur',
     image: '/Gdggroups.jpeg',
     year: '2024',
   },
@@ -152,6 +155,17 @@ export function TimelineAchievements() {
                         </div>
                       </div>
                       <p className="text-muted-foreground text-xs sm:text-sm line-clamp-3">{item.description}</p>
+                      {item.link && (
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-500 transition-colors hover:text-cyan-400"
+                        >
+                          Verify Hacktoberfest badge
+                          <span aria-hidden="true">↗</span>
+                        </a>
+                      )}
 
                       {item.highlight && (
                         <div className="absolute top-2 right-2">

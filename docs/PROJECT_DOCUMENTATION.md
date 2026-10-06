@@ -23,7 +23,8 @@ priyanshu-portfolio/
 │   ├── page.tsx            # Main page with all sections
 │   └── globals.css         # Global styles
 ├── components/
-│   ├── typing-hero.tsx     # Hero section with typing effect
+│   ├── typing-hero.tsx     # Hero introduction with profile image
+│   ├── portfolio-nav.tsx   # Responsive sticky portfolio navigation
 │   ├── skills-section.tsx  # Skills showcase
 │   ├── projects-section.tsx # Projects display
 │   ├── experience-section.tsx # Work experience
@@ -46,6 +47,12 @@ priyanshu-portfolio/
 ├── lib/
 │   └── utils.ts            # Utility functions
 ├── public/
+│   ├── images/
+│   │   ├── my-pic.jpg
+│   │   ├── smarsetu/smar-screen.jpg
+│   │   ├── sustaina/home.jpg
+│   │   ├── cicd/cicd-new.jpg
+│   │   └── sams/dashboard.jpg
 │   ├── kavachh.jpeg        # Kavach Hackathon certificate
 │   ├── hack-avishkar.jpeg  # Hack-Avishkar certificate
 │   ├── Gdggroups.jpeg      # GDG Groups certificate
@@ -64,24 +71,21 @@ priyanshu-portfolio/
 ## Features
 
 ### 1. Hero Section
-- Typing animation effect
-- Animated statistics cards
-- AWS + GCP certification badge
-- Smart India Hackathon badge
+- Profile portrait and gradient introduction
+- Direct links to projects, contact, and social profiles
+- Highlighted tools and resume downloads
 - Responsive design for all devices
 
 ### 2. Skills Section
-- Categorized skills display
-- Real emoji icons for technologies
-- Hover effects and animations
-- Categories: Frontend, Backend, DevOps, Databases, Tools
+- Technology-card grid and grouped skill categories
+- Responsive hover effects and dark visual theme
+- DevOps and software developer resume downloads
 
 ### 3. Projects Section
-- Featured projects showcase
-- Project cards with descriptions
-- Tech stack tags
-- GitHub and demo links
-- Hover animations
+- Screenshot-led project cards, ordered: SmarSetu, SUSTAINA, CI/CD Pipeline, and SAMS
+- Project highlights and technology tags
+- Live project links and GitHub links where available
+- Responsive layouts and hover animations
 
 ### 4. Experience Section
 - Professional experience timeline

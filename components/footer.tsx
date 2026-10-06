@@ -1,86 +1,93 @@
-'use client';
+import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
 
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+const footerLinks = [
+  { label: 'Projects', href: '#projects' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-100">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
-          {/* Brand */}
-          <div className="space-y-1 sm:space-y-2">
-            <div className="text-lg sm:text-2xl font-bold">Priyanshu Garg</div>
-            <p className="text-xs sm:text-sm text-slate-400">DevOps Engineer | Full-Stack Developer | Cloud Architect</p>
+    <footer className="border-t border-white/[0.08] bg-slate-950/70">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr]">
+          <div>
+            <a
+              href="#home"
+              className="font-mono text-xl font-bold tracking-tight text-foreground transition-colors hover:text-sky-300"
+            >
+              <span className="text-sky-400">&lt;</span>Priyanshu /&gt;
+            </a>
+            <p className="mt-4 max-w-sm text-sm leading-7 text-muted-foreground">
+              DevOps and software engineering—building practical products and dependable
+              infrastructure.
+            </p>
           </div>
 
-          {/* Links */}
           <div>
-            <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">Quick Links</h3>
-            <ul className="space-y-1.5 sm:space-y-2 text-slate-400">
-              <li>
-                <a href="#projects" className="text-xs sm:text-sm hover:text-white transition">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#skills" className="text-xs sm:text-sm hover:text-white transition">
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a href="#experience" className="text-xs sm:text-sm hover:text-white transition">
-                  Experience
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-xs sm:text-sm hover:text-white transition">
-                  Contact
-                </a>
-              </li>
+            <h2 className="text-sm font-semibold text-foreground">Explore</h2>
+            <ul className="mt-4 space-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-muted-foreground transition-colors hover:text-sky-300"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Social Links */}
           <div>
-            <h3 className="font-semibold text-sm sm:text-base mb-2 sm:mb-4">Connect</h3>
-            <div className="flex gap-2 sm:gap-4">
+            <h2 className="text-sm font-semibold text-foreground">Let&apos;s connect</h2>
+            <p className="mt-4 text-sm leading-6 text-muted-foreground">
+              Have a role, idea, or project in mind? I&apos;d be glad to hear from you.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a
+                href="mailto:priyanshugarg2525@gmail.com"
+                aria-label="Email Priyanshu Garg"
+                className="rounded-full border border-white/[0.1] p-2.5 text-muted-foreground transition hover:border-sky-400/40 hover:text-sky-300"
+              >
+                <Mail className="h-4 w-4" />
+              </a>
               <a
                 href="https://github.com/Priyanshu-2545"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition hover:scale-110 duration-200"
-                title="GitHub"
+                aria-label="Priyanshu Garg on GitHub"
+                className="rounded-full border border-white/[0.1] p-2.5 text-muted-foreground transition hover:border-sky-400/40 hover:text-sky-300"
               >
-                <Github className="w-4 sm:w-5 h-4 sm:h-5" />
+                <Github className="h-4 w-4" />
               </a>
               <a
                 href="https://www.linkedin.com/in/priyanshu-garg25/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition hover:scale-110 duration-200"
-                title="LinkedIn"
+                aria-label="Priyanshu Garg on LinkedIn"
+                className="rounded-full border border-white/[0.1] p-2.5 text-muted-foreground transition hover:border-sky-400/40 hover:text-sky-300"
               >
-                <Linkedin className="w-4 sm:w-5 h-4 sm:h-5" />
+                <Linkedin className="h-4 w-4" />
               </a>
               <a
-                href="mailto:priyanshugarg2525@gmail.com"
-                className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition hover:scale-110 duration-200"
-                title="Email"
+                href="https://smarsetu.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-white/[0.1] px-3 py-2 text-xs text-muted-foreground transition hover:border-sky-400/40 hover:text-sky-300"
               >
-                <Mail className="w-4 sm:w-5 h-4 sm:h-5" />
+                SmarSetu
+                <ArrowUpRight className="h-3.5 w-3.5" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-slate-800 pt-6 sm:pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-slate-400 text-xs sm:text-sm text-center sm:text-left">
-            <p>Built with Next.js, Tailwind CSS & deployed on Vercel</p>
-            <p>
-              2024 - {new Date().getFullYear()} &copy; Priyanshu Garg. All rights reserved.
-            </p>
-          </div>
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/[0.08] pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>Built with care by Priyanshu Garg.</p>
+          <p>© {new Date().getFullYear()} Priyanshu Garg. All rights reserved.</p>
         </div>
       </div>
     </footer>

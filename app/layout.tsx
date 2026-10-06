@@ -4,13 +4,14 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SocialRail } from '@/components/social-rail';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://priyanshu-portfolio.vercel.app'),
-  title: 'Priyanshu Garg - DevOps Engineer & Full-Stack Developer',
-  description: 'DevOps engineer specializing in AWS, Kubernetes, CI/CD pipelines, and cloud infrastructure. Building scalable systems with Node.js, Next.js, and PostgreSQL.',
+  title: 'Priyanshu Garg | DevOps & Software Engineer',
+  description: 'Portfolio of Priyanshu Garg: DevOps, cloud infrastructure, CI/CD automation, and full-stack software projects.',
   keywords: ['DevOps', 'AWS', 'Kubernetes', 'Full-Stack Developer', 'Cloud Engineer', 'CI/CD'],
   authors: [{ name: 'Priyanshu Garg' }],
   icons: {
@@ -21,14 +22,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://priyanshu-portfolio.vercel.app',
-    title: 'Priyanshu Garg - DevOps Engineer & Full-Stack Developer',
-    description: 'DevOps engineer specializing in AWS, Kubernetes, and cloud infrastructure.',
+    title: 'Priyanshu Garg | DevOps & Software Engineer',
+    description: 'DevOps, cloud infrastructure, CI/CD automation, and full-stack software projects.',
     siteName: 'Priyanshu Garg Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Priyanshu Garg - DevOps Engineer',
-    description: 'Building scalable cloud infrastructure and DevOps solutions.',
+    title: 'Priyanshu Garg | DevOps & Software Engineer',
+    description: 'Building cloud infrastructure, automated delivery pipelines, and full-stack products.',
   },
 };
 
@@ -41,12 +42,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#090e18" />
         <meta name="color-scheme" content="light dark" />
       </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
+          <SocialRail />
           <Toaster />
         </ThemeProvider>
       </body>

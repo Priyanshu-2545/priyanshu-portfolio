@@ -1,286 +1,197 @@
-'use client';
+import {
+  Award,
+  BadgeCheck,
+  BookOpenCheck,
+  Braces,
+  Cloud,
+  Database,
+  ExternalLink,
+  ShieldCheck,
+} from 'lucide-react';
 
-import { useState } from 'react';
-import { Award, ExternalLink, Shield, Trophy, Star, Zap } from 'lucide-react';
-
-interface Credential {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-  link: string;
-  type: 'certification' | 'achievement' | 'badge';
-  featured?: boolean;
-}
-
-const credentials: Credential[] = [
+const learningPaths = [
   {
-    id: '1',
-    title: 'AWS Cloud Quest: Cloud Practitioner',
-    issuer: 'Amazon Web Services',
-    date: 'Apr 2026',
-    description: 'Certified in AWS services including EC2, VPC, RDS, and DynamoDB',
-    icon: Shield,
-    link: 'https://www.credly.com/badges/8bc8be88-8bc3-4ed7-9a7d-69d40780238e/public_url',
-    type: 'certification',
-    featured: true,
+    title: 'Cloud & Infrastructure',
+    subtitle: 'Cloud platforms and operations',
+    icon: Cloud,
+    accent: 'cyan',
+    credentials: [
+      {
+        title: 'AWS Cloud Quest: Cloud Practitioner',
+        issuer: 'Amazon Web Services',
+        date: 'Apr 2026',
+        description: 'AWS services including EC2, VPC, RDS, and DynamoDB.',
+        href: 'https://www.credly.com/badges/8bc8be88-8bc3-4ed7-9a7d-69d40780238e/public_url',
+        featured: true,
+      },
+      {
+        title: 'Google Cloud Computing Foundations',
+        issuer: 'Google Cloud',
+        date: '2024',
+        description: 'Cloud computing fundamentals and infrastructure.',
+        href: 'https://www.credly.com/badges/75e7abcd-cba0-4418-acc1-244e42e3dcac/public_url',
+      },
+    ],
   },
   {
-    id: '2',
-    title: 'Google Cloud Computing Foundations',
-    issuer: 'Google Cloud',
-    date: '2024',
-    description: 'Certified in cloud computing fundamentals and infrastructure',
-    icon: Shield,
-    link: 'https://www.credly.com/badges/75e7abcd-cba0-4418-acc1-244e42e3dcac/public_url',
-    type: 'certification',
+    title: 'Databases & Engineering',
+    subtitle: 'Data skills and engineering foundations',
+    icon: Database,
+    accent: 'blue',
+    credentials: [
+      {
+        title: 'MongoDB Developer Associate',
+        issuer: 'MongoDB',
+        date: '2024',
+        description: 'MongoDB database development and administration.',
+        href: 'https://www.credly.com/badges/aaaf19af-0c10-4297-9c2b-8b0a956093ec/public_url',
+        featured: true,
+      },
+      {
+        title: 'SQL Masterclass: Basic to Advanced',
+        issuer: 'BE10X AI Career Accelerator',
+        date: '2024',
+        description: 'Completed a comprehensive SQL course.',
+        href: 'https://app.aicareeraccelerator.in/certificate/TYDHRHyASRKZpiS',
+      },
+      {
+        title: 'Project Management Fundamentals',
+        issuer: 'IBM SkillsBuild',
+        date: 'Jul 2024',
+        description: 'Project planning and management essentials.',
+        href: 'https://www.credly.com/badges/7696f61d-579f-47e6-9227-d22d96c8e49a/public_url',
+      },
+    ],
   },
   {
-    id: '3',
-    title: 'MongoDB Developer Associate',
-    issuer: 'MongoDB',
-    date: '2024',
-    description: 'Certified in MongoDB database development and administration',
-    icon: Shield,
-    link: 'https://www.credly.com/badges/aaaf19af-0c10-4297-9c2b-8b0a956093ec/public_url',
-    type: 'certification',
-    featured: true,
-  },
-  {
-    id: '4',
-    title: 'Project Management Fundamentals',
-    issuer: 'IBM SkillsBuild',
-    date: 'Jul 2024',
-    description: 'Certified in project management essentials',
-    icon: Shield,
-    link: 'https://www.credly.com/badges/7696f61d-579f-47e6-9227-d22d96c8e49a/public_url',
-    type: 'certification',
-  },
-  {
-    id: '5',
-    title: 'SQL Masterclass: Basic to Advanced',
-    issuer: 'BE10X AI Career Accelerator',
-    date: '2024',
-    description: 'Completed comprehensive SQL course',
-    icon: Shield,
-    link: 'https://app.aicareeraccelerator.in/certificate/TYDHRHyASRKZpiS',
-    type: 'certification',
-  },
-  {
-    id: '6',
-    title: 'Kavach Hackathon Grand Finalist',
-    issuer: 'Government of India',
-    date: '2023',
-    description: 'Reached Grand Finale in Kavach Cyber Security Hackathon',
-    icon: Trophy,
-    link: '#',
-    type: 'achievement',
-    featured: true,
-  },
-  {
-    id: '7',
-    title: 'Hack-Avishkar Champion',
-    issuer: 'Google Developer Student Clubs',
-    date: '2024',
-    description: '1st Place Winner at Hack-Avishkar Competition',
-    icon: Trophy,
-    link: '#',
-    type: 'achievement',
-    featured: true,
-  },
-  {
-    id: '8',
-    title: 'Smart India Hackathon 2024 Winner',
-    issuer: 'Government of India',
-    date: '2024',
-    description: 'Won for Smart Asset Monitoring System project',
-    icon: Trophy,
-    link: '#',
-    type: 'achievement',
-    featured: true,
-  },
-  {
-    id: '9',
-    title: 'GDG Udaipur Core Team Member',
-    issuer: 'Google Developer Groups',
-    date: '2024-2025',
-    description: 'Organized Google DevFest for 300+ attendees',
-    icon: Award,
-    link: '#',
-    type: 'achievement',
-  },
-  {
-    id: '10',
-    title: 'Hacktoberfest 2025: Supercontributor',
-    issuer: 'DigitalOcean & GitHub',
-    date: '2025',
-    description: 'Global Top 10k - 6+ accepted PRs/MRs in open-source contributions',
-    icon: Star,
-    link: 'https://www.holopin.io/hacktoberfest2025/userbadge/cmgusqszh007bky04icq5iyk4',
-    type: 'badge',
-    featured: true,
-  },
-  {
-    id: '11',
-    title: 'Full Stack Web Development (MERN)',
-    issuer: 'Grras Solutions',
-    date: '2023',
-    description: 'Certified in MongoDB, Express.js, React, Node.js',
-    icon: Shield,
-    link: '#',
-    type: 'certification',
+    title: 'Web Development',
+    subtitle: 'Full-stack application development',
+    icon: Braces,
+    accent: 'teal',
+    credentials: [
+      {
+        title: 'Full Stack Web Development (MERN)',
+        issuer: 'Grras Solutions',
+        date: '2023',
+        description: 'MongoDB, Express.js, React, and Node.js.',
+        href: 'https://drive.google.com/file/d/1Kp6qxpHSeR_91rsMzL91_-EYE8RMQPdY/view?usp=sharing',
+        featured: true,
+      },
+    ],
   },
 ];
 
+const accentStyles = {
+  cyan: {
+    border: 'border-cyan-400',
+    glow: 'bg-cyan-400/[0.04]',
+    icon: 'border-cyan-400 text-cyan-300',
+    item: 'text-cyan-400',
+  },
+  blue: {
+    border: 'border-blue-500',
+    glow: 'bg-blue-500/[0.04]',
+    icon: 'border-blue-500 text-blue-300',
+    item: 'text-blue-400',
+  },
+  teal: {
+    border: 'border-teal-400',
+    glow: 'bg-teal-400/[0.04]',
+    icon: 'border-teal-400 text-teal-300',
+    item: 'text-teal-400',
+  },
+};
+
 export function CredentialsShowcase() {
-  const [filter, setFilter] = useState<'all' | 'certification' | 'achievement' | 'badge'>('all');
-
-  const filteredCredentials = credentials.filter(
-    (cred) => filter === 'all' || cred.type === filter
-  );
-
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'certification':
-        return 'from-blue-500 to-cyan-500';
-      case 'achievement':
-        return 'from-yellow-500 to-orange-500';
-      case 'badge':
-        return 'from-purple-500 to-pink-500';
-      default:
-        return 'from-gray-500 to-gray-600';
-    }
-  };
-
-  const getTypeLabel = (type: string) => {
-    switch (type) {
-      case 'certification':
-        return 'Certification';
-      case 'achievement':
-        return 'Achievement';
-      case 'badge':
-        return 'Badge';
-      default:
-        return 'Credential';
-    }
-  };
-
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-background to-slate-900/10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Header */}
-        <div className="space-y-2 sm:space-y-4 mb-10 sm:mb-12 md:mb-16 text-center">
-          <p className="text-blue-500 font-semibold text-xs sm:text-sm tracking-widest uppercase">Credentials</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">Certifications & Achievements</h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
-            A showcase of professional certifications, achievements, and badges earned through continuous learning and contributions.
-          </p>
-        </div>
+    <section
+      id="learning"
+      className="relative overflow-hidden py-16 sm:py-20 md:py-24"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_10%_20%,rgba(37,99,235,0.12),transparent_38%),radial-gradient(ellipse_at_90%_80%,rgba(20,184,166,0.08),transparent_35%)]" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="rounded-[1.75rem] border border-white/[0.09] bg-slate-950/55 p-5 shadow-2xl shadow-blue-950/10 backdrop-blur-sm sm:p-8 lg:p-10">
+          <div className="mb-8 flex items-start gap-4 sm:mb-10">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/20 sm:h-14 sm:w-14">
+              <Award className="h-6 w-6 sm:h-7 sm:w-7" />
+            </div>
+            <div>
+              <p className="mb-1 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-400">
+                <BookOpenCheck className="h-4 w-4" />
+                Continuous Learning
+              </p>
+              <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                Certifications and Learning
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground sm:text-base">
+                Focused learning across cloud, DevOps, software engineering, databases, and web development.
+              </p>
+            </div>
+          </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
-          {(['all', 'certification', 'achievement', 'badge'] as const).map((filterType) => (
-            <button
-              key={filterType}
-              onClick={() => setFilter(filterType)}
-              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 ${
-                filter === filterType
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
-                  : 'bg-slate-100 dark:bg-slate-800 text-muted-foreground hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
-            >
-              {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
-            </button>
-          ))}
-        </div>
+          <div className="grid items-stretch gap-4 lg:grid-cols-3 lg:gap-5">
+            {learningPaths.map((path) => {
+              const Icon = path.icon;
+              const styles = accentStyles[path.accent as keyof typeof accentStyles];
 
-        {/* Credentials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {filteredCredentials.map((credential) => {
-            const Icon = credential.icon;
-            return (
-              <div
-                key={credential.id}
-                className={`group relative bg-background border-2 rounded-xl p-5 sm:p-6 transition-all duration-300 overflow-hidden cursor-pointer ${
-                  credential.featured
-                    ? 'border-blue-500/50 hover:border-blue-500 hover:shadow-xl hover:shadow-blue-500/20 hover:scale-105'
-                    : 'border-border hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10 hover:scale-102'
-                }`}
-                onClick={() => credential.link !== '#' && window.open(credential.link, '_blank', 'noopener,noreferrer')}
-              >
-                {/* Featured Badge */}
-                {credential.featured && (
-                  <div className="absolute top-3 right-3">
-                    <div className="px-2 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full text-xs font-bold text-white">
-                      Featured
+              return (
+                <article
+                  key={path.title}
+                  className={`relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-black/25 ${styles.glow}`}
+                >
+                  <div className={`absolute inset-x-0 top-0 h-1 ${styles.border} border-t-2`} />
+                  <div className="flex items-center gap-3 p-4 pb-3 sm:p-5 sm:pb-4">
+                    <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border bg-slate-950/70 ${styles.icon}`}>
+                      <Icon className="h-5 w-5" />
                     </div>
-                  </div>
-                )}
-
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${getTypeColor(credential.type)} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-
-                {/* Content */}
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${getTypeColor(credential.type)} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                  </div>
-
-                  {/* Type Badge */}
-                  <div className="inline-block px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-full text-xs font-semibold text-muted-foreground mb-3">
-                    {getTypeLabel(credential.type)}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-bold text-base sm:text-lg mb-1 group-hover:text-blue-500 transition-colors line-clamp-2">
-                    {credential.title}
-                  </h3>
-
-                  {/* Issuer & Date */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <p className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 font-medium">{credential.issuer}</p>
-                    <span className="text-muted-foreground">•</span>
-                    <p className="text-xs text-muted-foreground">{credential.date}</p>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2 mb-4">
-                    {credential.description}
-                  </p>
-
-                  {/* Link Indicator */}
-                  {credential.link !== '#' && (
-                    <div className="flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:gap-3 transition-all">
-                      <span>View Credential</span>
-                      <ExternalLink className="w-4 h-4" />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-sm font-bold text-foreground sm:text-base">{path.title}</h3>
+                      <p className="text-xs text-muted-foreground">{path.subtitle}</p>
                     </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                    <ShieldCheck className="h-4 w-4 shrink-0 text-blue-400" aria-hidden="true" />
+                  </div>
 
-        {/* Stats */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-          <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl">
-            <p className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">6</p>
-            <p className="text-xs sm:text-sm text-muted-foreground">Certifications</p>
-          </div>
-          <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-xl">
-            <p className="text-2xl sm:text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">4</p>
-            <p className="text-xs sm:text-sm text-muted-foreground">Achievements</p>
-          </div>
-          <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl">
-            <p className="text-2xl sm:text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">1</p>
-            <p className="text-xs sm:text-sm text-muted-foreground">Badge</p>
-          </div>
-          <div className="text-center p-4 sm:p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl">
-            <p className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-1">11</p>
-            <p className="text-xs sm:text-sm text-muted-foreground">Total</p>
+                  <ul className="flex flex-1 flex-col gap-2 px-4 pb-4 sm:px-5 sm:pb-5">
+                    {path.credentials.map((credential) => (
+                      <li key={credential.title}>
+                        <a
+                          href={credential.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/item block rounded-xl border border-white/[0.08] bg-slate-950/55 p-3 transition duration-200 hover:border-blue-400/35 hover:bg-white/[0.03]"
+                        >
+                          <div className="flex items-start gap-2">
+                            <BadgeCheck className={`mt-0.5 h-4 w-4 shrink-0 ${styles.item}`} />
+                            <div className="min-w-0 flex-1">
+                              <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+                                <h4 className="text-xs font-semibold leading-5 text-foreground sm:text-sm">
+                                  {credential.title}
+                                </h4>
+                                {credential.featured && (
+                                  <span className="rounded-full border border-blue-400/20 bg-blue-400/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-blue-300">
+                                    Featured
+                                  </span>
+                                )}
+                              </div>
+                              <p className="mt-1 text-[11px] leading-4 text-muted-foreground">
+                                {credential.issuer} <span className="px-1 text-blue-400">·</span> {credential.date}
+                              </p>
+                              <p className="mt-1.5 text-[11px] leading-4 text-slate-400">
+                                {credential.description}
+                              </p>
+                              <span className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-blue-300 transition-colors group-hover/item:text-cyan-300">
+                                View Credential
+                                <ExternalLink className="h-3 w-3" />
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
