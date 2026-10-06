@@ -303,7 +303,7 @@ export function SkillsSection() {
           </div>
           <div className="flex flex-wrap gap-3">
             <a
-              href="/Priyanshu_Garg_DevOps_Engineer.pdf"
+              href="/resumes/Priyanshu_Garg_DevOps_Engineer.pdf"
               download="Priyanshu_Garg_DevOps_Engineer.pdf"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-3 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-blue-500/20"
             >
@@ -311,7 +311,7 @@ export function SkillsSection() {
               DevOps resume
             </a>
             <a
-              href="/Priyanshu_Garg_SDE.pdf"
+              href="/resumes/Priyanshu_Garg_SDE.pdf"
               download="Priyanshu_Garg_SDE.pdf"
               className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-foreground transition hover:border-sky-400/40 hover:text-sky-300"
             >
