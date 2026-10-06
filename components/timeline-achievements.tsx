@@ -80,24 +80,6 @@ const timeline: TimelineItem[] = [
   },
 ];
 
-const certificates = [
-  {
-    title: 'Kavach Hackathon',
-    image: '/kavachh.jpeg',
-    year: '2023',
-  },
-  {
-    title: 'Hack-Avishkar',
-    image: '/hack-avishkar.jpeg',
-    year: '2024',
-  },
-  {
-    title: 'GDG Udaipur',
-    image: '/Gdggroups.jpeg',
-    year: '2024',
-  },
-];
-
 export function TimelineAchievements() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
@@ -200,36 +182,6 @@ export function TimelineAchievements() {
           </div>
         </div>
 
-        {/* Certificate Images */}
-        <div className="mt-16 sm:mt-20">
-          <div className="space-y-2 sm:space-y-3 text-center mb-8 sm:mb-10">
-            <p className="text-blue-500 font-semibold text-xs sm:text-sm uppercase tracking-widest">Certificates</p>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">Achievement Certificates</h3>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            {certificates.map((cert, idx) => (
-              <div
-                key={idx}
-                className="group relative bg-card rounded-xl overflow-hidden border border-border hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <span className="text-white font-semibold text-sm">{cert.title}</span>
-                  </div>
-                </div>
-                <div className="p-3 sm:p-4">
-                  <p className="font-bold text-sm sm:text-base text-center">{cert.title}</p>
-                  <p className="text-xs text-muted-foreground text-center mt-1">{cert.year}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

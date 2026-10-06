@@ -32,8 +32,8 @@ const projects: Project[] = [
     ],
     image: '/images/smarsetu/smar-screen.jpg',
     imageAlt: 'SmarSetu military heritage and remembrance platform',
-    imageWidth: 1887,
-    imageHeight: 897,
+    imageWidth: 1200,
+    imageHeight: 570,
     tags: ['Next.js 14', 'TypeScript', 'Prisma', 'PostgreSQL', 'AWS', 'Terraform', 'Docker', 'Kubernetes (k3s)', 'GitHub Actions', 'Traefik', 'Trivy'],
     tagLabel: 'Tech stack',
     demo: 'https://smarsetu.app/',
@@ -51,8 +51,8 @@ const projects: Project[] = [
     ],
     image: '/images/sustaina/home.jpg',
     imageAlt: 'SUSTAINA water and electricity management app landing page',
-    imageWidth: 1875,
-    imageHeight: 877,
+    imageWidth: 1200,
+    imageHeight: 561,
     tags: ['React', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'REST APIs'],
     tagLabel: 'Tech stack',
     github: 'https://github.com/Priyanshu-2545/Sustaina-water-electricity-',
@@ -71,8 +71,8 @@ const projects: Project[] = [
     ],
     image: '/images/cicd/cicd-new.jpg',
     imageAlt: 'CI/CD pipeline stages from integration through delivery',
-    imageWidth: 1817,
-    imageHeight: 866,
+    imageWidth: 1200,
+    imageHeight: 572,
     tags: ['AWS', 'Docker', 'Kubernetes', 'Jenkins', 'Nginx', 'Prometheus', 'Grafana', 'GitHub Actions'],
     tagLabel: 'Tech stack',
     github: 'https://github.com/Priyanshu-2545/cloud-native-cicd-nodejs',
@@ -90,8 +90,8 @@ const projects: Project[] = [
     ],
     image: '/images/sams/dashboard.jpg',
     imageAlt: 'SAMS smart asset monitoring dashboard with live map and analytics',
-    imageWidth: 1536,
-    imageHeight: 1024,
+    imageWidth: 1200,
+    imageHeight: 800,
     tags: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'GPS tracking'],
     tagLabel: 'Tech stack',
     github: 'https://github.com/Priyanshu-2545',
@@ -142,20 +142,25 @@ export function ProjectsSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Open ${project.title}`}
-                  className="relative block h-[260px] w-full overflow-hidden bg-[#080d15] sm:h-[320px] lg:h-[430px]"
+                  className="group/image relative flex w-full items-center justify-center self-stretch overflow-hidden bg-[#080d15]"
                 >
-                  <span
+                  <Image
+                    src={project.image}
+                    alt=""
                     aria-hidden="true"
-                    className="pointer-events-none absolute -inset-5 scale-110 bg-cover bg-center opacity-40 blur-2xl"
-                    style={{ backgroundImage: `url(${project.image})` }}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="scale-110 object-cover opacity-35 blur-2xl"
                   />
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-slate-950/25 via-transparent to-slate-950/35" />
                   <Image
                     src={project.image}
                     alt={project.imageAlt}
-                    fill
+                    width={project.imageWidth}
+                    height={project.imageHeight}
                     priority={index === 0}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="z-[1] object-contain object-center transition duration-500 group-hover:scale-[1.01]"
+                    className="relative z-[1] block h-auto w-full transition duration-500 group-hover/image:scale-[1.01]"
                   />
                   <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-slate-950/75 px-3 py-1.5 font-mono text-xs text-white/90 backdrop-blur-sm sm:left-5 sm:top-5">
                     PROJECT {project.number}

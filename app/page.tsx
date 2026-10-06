@@ -10,6 +10,7 @@ import { TypingHero } from '@/components/typing-hero';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { CredentialsShowcase } from '@/components/credentials-showcase';
+import { HackathonsShowcase } from '@/components/hackathons-showcase';
 import { TimelineAchievements } from '@/components/timeline-achievements';
 import { AmbientBg } from '@/components/ambient-bg';
 import { CtaBadges } from '@/components/cta-badges';
@@ -43,6 +44,10 @@ export default function Home() {
 
         <ScrollReveal delay={100}>
           <TimelineAchievements />
+        </ScrollReveal>
+
+        <ScrollReveal delay={100}>
+          <HackathonsShowcase />
         </ScrollReveal>
 
         <ScrollReveal delay={100}>

@@ -1,12 +1,9 @@
 // @ts-ignore
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
 import { ThemeProvider } from '@/components/theme-provider';
 import { SocialRail } from '@/components/social-rail';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://priyanshu-portfolio.vercel.app'),
@@ -45,7 +42,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#090e18" />
         <meta name="color-scheme" content="light dark" />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
           <SocialRail />
